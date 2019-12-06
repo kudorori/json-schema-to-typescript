@@ -163,14 +163,11 @@ export function toSafeString(string: string) {
   // First character: a-zA-Z | _ | $
   // Rest: a-zA-Z | _ | $ | 0-9
 
-  return upperFirst(
-    // remove accents, umlauts, ... by their basic latin letters
-    deburr(string)
-      // replace chars which are not valid for typescript identifiers with whitespace
-      .replace(/(^\s*[^a-zA-Z_$])|([^a-zA-Z_$\d])/g, ' ')
-      // remove remaining whitespace
-      .replace(/\s/g, '')
-  )
+  return deburr(string)
+    // replace chars which are not valid for typescript identifiers with whitespace
+    .replace(/(^\s*[^a-zA-Z_$])|([^a-zA-Z_$\d])/g, ' ')
+    // remove remaining whitespace
+    .replace(/\s/g, '')
 }
 
 export function generateName(from: string, usedNames: Set<string>) {

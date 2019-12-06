@@ -170,13 +170,11 @@ function toSafeString(string) {
     // identifiers in javaScript/ts:
     // First character: a-zA-Z | _ | $
     // Rest: a-zA-Z | _ | $ | 0-9
-    return lodash_1.upperFirst(
-    // remove accents, umlauts, ... by their basic latin letters
-    lodash_1.deburr(string)
+    return lodash_1.deburr(string)
         // replace chars which are not valid for typescript identifiers with whitespace
         .replace(/(^\s*[^a-zA-Z_$])|([^a-zA-Z_$\d])/g, ' ')
         // remove remaining whitespace
-        .replace(/\s/g, ''));
+        .replace(/\s/g, '');
 }
 exports.toSafeString = toSafeString;
 function generateName(from, usedNames) {
